@@ -7,8 +7,10 @@ step — `public/` is served as-is.
 
 ## Running it here
 - Use `docker-compose.base44.yml`. It runs `node:22-slim` with the repo bind-mounted at
-  `/app`, installs npm dependencies on container start, and runs `nodemon` watching only
-  `server.js`.
+  `/app`, runs `npm ci` from `package-lock.json` on container start, and runs `nodemon`
+  watching only `server.js`.
+- `public/` is served straight off disk, so frontend edits show on refresh without a
+  restart; only `server.js` edits need the nodemon restart.
 - `node_modules` lives in an anonymous volume, so it is never written into the repo.
 - First boot is slow (npm install + sharp binary); the compose healthcheck has a 60s
   start period and probes `/api/health`.
@@ -20,6 +22,10 @@ step — `public/` is served as-is.
   are removed on graceful shutdown. Do not expect them to persist across restarts.
 - Uploads are held in memory (multer memory storage); the 15 MB limit is enforced both by
   multer and in the frontend.
+- The page toggles visibility with the `hidden` attribute. `.dropzone` and `.selection`
+  set `display`, which overrides the browser's default `[hidden]` rule, so
+  `public/styles.css` keeps a global `[hidden] { display: none !important; }` guard.
+  Keep it — without it the empty preview row and the drop zone both show at once.
 
 ## Verify a change
 - `curl -s localhost:3000/api/health` → `{"status":"ok"}`

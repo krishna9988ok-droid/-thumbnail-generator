@@ -7,7 +7,7 @@ services:
       [
         "sh",
         "-ec",
-        "npm install --no-audit --no-fund && exec npx nodemon --legacy-watch --watch server.js server.js",
+        "npm ci --no-audit --no-fund && exec npx nodemon --legacy-watch --watch server.js server.js",
       ]
     ports:
       - "3000:3000"
