@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thumbnail Studio — one image, every thumbnail size</title>
+    <meta
+      name="description"
+      content="Upload one image and download ready-to-post thumbnails for YouTube, Instagram, X, Facebook and LinkedIn."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">TS</span>
+        <span class="brand-name">Thumbnail Studio</span>
+      </a>
+      <span class="pill">8 sizes per image</span>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <h1>One image.<br />Every thumbnail size.</h1>
+        <p class="lede">
+          Upload a photo and get crisp, correctly cropped thumbnails for YouTube, Instagram,
+          X, Facebook and LinkedIn — ready to download and post.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="upload-heading">
+        <h2 id="upload-heading" class="card-title">Upload your image</h2>
+
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose an image to upload">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p class="drop-title">Drag an image here</p>
+          <p class="drop-sub">
+            or <span class="link-look">choose a file</span> · JPG, PNG, WebP · max 15 MB
+          </p>
+          <input id="file-input" type="file" accept="image/*" hidden />
+        </div>
+
+        <div id="selection" class="selection" hidden>
+          <img id="preview" class="preview" alt="Selected image preview" />
+          <div class="selection-meta">
+            <p id="file-name" class="file-name"></p>
+            <p id="file-size" class="file-size"></p>
+          </div>
+          <button id="remove" class="ghost-button" type="button">Replace</button>
+        </div>
+
+        <button id="generate" class="primary-button" type="button" disabled>
+          Generate thumbnails
+        </button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="results" class="results" hidden aria-labelledby="results-heading">
+        <div class="results-head">
+          <h2 id="results-heading" class="results-title">Your thumbnails</h2>
+          <p id="results-note" class="results-note"></p>
+        </div>
+        <div id="grid" class="grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      Processed on the server and served from temporary storage — nothing is added to a library.
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

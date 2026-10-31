@@ -1,0 +1,22 @@
+{
+  "name": "thumbnail-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Upload one image and get ready-to-post thumbnails for every major platform.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon --legacy-watch --watch server.js server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^2.0.0",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
